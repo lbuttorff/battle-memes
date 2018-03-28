@@ -8,13 +8,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class UserController {
 
-    @RequestMapping(method = RequestMethod.GET, value = "/signin")
-    public String getSignIn(){
+    @RequestMapping(method = RequestMethod.GET, value = "/login")
+    public String getLogin(){
         return null;
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "/signin")
-    public String signIn(){
+    @RequestMapping(method = RequestMethod.POST, value = "/login")
+    public String login(){
         //Validate user login, return to Global Feed
         return "global-feed";
     }

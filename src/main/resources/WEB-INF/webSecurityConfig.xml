@@ -9,15 +9,16 @@
     http://www.springframework.org/schema/beans/spring-beans-4.2.xsd">
 
     <http use-expressions="true">
-        <intercept-url pattern="/signup*" access="isAnonymous()" />
-        <intercept-url pattern="/**" access="isAuthenticated()"/>
+        <intercept-url pattern="/signup" access="isAnonymous()" />
+        <intercept-url pattern="/login" access="isAnonymous()" />
+        <intercept-url pattern="/global-feed" access="isAuthenticated()"/>
 
         <form-login
-                login-page='/signup'
+                login-page='/login'
                 default-target-url="/global-feed.html"
-                authentication-failure-url="/signup?error=true" />
+                authentication-failure-url="/login?error=true" />
 
-        <logout logout-success-url="/signup" />
+        <logout logout-success-url="/login" />
 
     </http>
     <authentication-manager>

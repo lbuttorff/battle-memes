@@ -15,15 +15,15 @@ import javax.validation.Valid;
 public class SignUpController {
 
     @RequestMapping(method = RequestMethod.GET)
-    public String getLogin(Model model) {
+    public String getSign(Model model) {
         model.addAttribute("user", new User());
-        return "login";
+        return "sign-up";
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public String login(@ModelAttribute("user") @Valid User user) {
+    public String signUp(@ModelAttribute("user") @Valid User user) {
 
         // implement your own registration logic here...
-        return "main";
+        return "login";
     }
 }

@@ -4,7 +4,7 @@ package com.ist411.memes.models;
 import javax.persistence.*;
 
 @Entity
-@Table(name="User")
+@Table(name="User", uniqueConstraints = @UniqueConstraint(columnNames = "email"))
 public class User {
 
     @Id
@@ -14,7 +14,6 @@ public class User {
 
     private String fName;
     private String lName;
-    private String username;
     private String password;
     private String email;
 
@@ -32,14 +31,6 @@ public class User {
 
     public void setlName(String lName) {
         this.lName = lName;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
     }
 
     public String getPassword() {
@@ -60,6 +51,6 @@ public class User {
 
     @Override
     public String toString(){
-        return "id="+id+", username="+username;
+        return "id="+id+", email="+email;
     }
 }
