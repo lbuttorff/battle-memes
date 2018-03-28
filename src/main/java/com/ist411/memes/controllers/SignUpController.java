@@ -2,11 +2,12 @@ package com.ist411.memes.controllers;
 
 import com.ist411.memes.models.User;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import java.util.Map;
+import javax.validation.Valid;
 
 
 @Controller
@@ -14,22 +15,15 @@ import java.util.Map;
 public class SignUpController {
 
     @RequestMapping(method = RequestMethod.GET)
-    public String viewRegistration(Map<String, Object> model) {
-        User userForm = new User();
-        model.put("userForm", userForm);
-        return "Signup";
+    public String getLogin(Model model) {
+        model.addAttribute("user", new User());
+        return "login";
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public String processRegistration(@ModelAttribute("userForm") User user, Map<String, Object> model) {
+    public String login(@ModelAttribute("user") @Valid User user) {
 
         // implement your own registration logic here...
-
-        // for testing purpose:
-        System.out.println("username: " + user.getUsername());
-        System.out.println("password: " + user.getPassword());
-        System.out.println("email: " + user.getEmail());
-
         return "main";
     }
 }

@@ -1,5 +1,3 @@
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -8,18 +6,18 @@
     </head>
     <body>
     <div align="center">
-        <form:form action="signup" method="post" modelAttribute="userForm">
+        <form action="signup" method="post" modelAttribute="userForm">
             <h2>Spring MVC Form Demo - Registration</h2>
-            <label>First name: </label><form:input type="text" path="fName">
-            <label>Last name: </label><form:input type="text" path="lName">
-            <label>User name: </label><form:input type="text" path="username">
-            <label>Email: </label><form:input type="text" path="email">
+            <label>First name: </label><input type="text" path="fName">
+            <label>Last name: </label><input type="text" path="lName">
+            <label>User name: </label><input type="text" path="username">
+            <label>Email: </label><input type="text" path="email">
             <!--<label>Birthday: </label><input type="text" path="birthday">-->
-            <label>Password: </label><form:input type="password" path="password">
-            <label>Confirm Password: </label><form:input type="password" path="confirmPassword">
+            <label>Password: </label><input type="password" path="password">
+            <label>Confirm Password: </label><input type="password" path="confirmPassword">
             <br>
             <input class="submit" type="submit">
-        </form:form>
+        </form>
     </div>
     </body>
 </html>
