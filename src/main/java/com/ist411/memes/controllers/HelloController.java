@@ -1,4 +1,4 @@
-package com.ist411.memes;
+package com.ist411.memes.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

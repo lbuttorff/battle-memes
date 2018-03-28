@@ -1,4 +1,4 @@
-package com.ist411.memes;
+package com.ist411.memes.controllers;
 
 import com.ist411.memes.models.User;
 import org.springframework.stereotype.Controller;
@@ -23,8 +23,7 @@ public class SignUpController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public String processRegistration(@ModelAttribute("userForm") User user,
-                                      Map<String, Object> model) {
+    public String processRegistration(@ModelAttribute("userForm") User user, Map<String, Object> model) {
 
         // implement your own registration logic here...
 
@@ -32,8 +31,7 @@ public class SignUpController {
         System.out.println("username: " + user.getUsername());
         System.out.println("password: " + user.getPassword());
         System.out.println("email: " + user.getEmail());
-        System.out.println("birth date: " + user.getBirthDate());
 
-        return "RegistrationSuccess";
+        return "main";
     }
 }

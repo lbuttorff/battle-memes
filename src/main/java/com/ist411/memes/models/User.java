@@ -1,14 +1,22 @@
 package com.ist411.memes.models;
 
-import java.util.Date;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name="User")
 public class User {
+
+    @Id
+    @Column(name="id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+
     private String fName;
     private String lName;
     private String username;
     private String password;
     private String email;
-    private Date birthDate;
 
     public String getfName() {
         return fName;
@@ -50,11 +58,8 @@ public class User {
         this.email = email;
     }
 
-    public Date getBirthDate() {
-        return birthDate;
-    }
-
-    public void setBirthDate(Date birthDate) {
-        this.birthDate = birthDate;
+    @Override
+    public String toString(){
+        return "id="+id+", username="+username;
     }
 }
