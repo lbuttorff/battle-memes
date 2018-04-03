@@ -1,7 +1,10 @@
 package com.ist411.memes.models;
 
 
+import org.springframework.context.annotation.Role;
+
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name="User", uniqueConstraints = @UniqueConstraint(columnNames = "email"))
@@ -16,6 +19,15 @@ public class User {
     private String lName;
     private String password;
     private String email;
+
+    @ManyToMany
+    @JoinTable(
+            name = "users_roles",
+            joinColumns = @JoinColumn(
+                    name = "user_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(
+                    name = "role_id", referencedColumnName = "id"))
+    private List<String> roles;
 
     public String getfName() {
         return fName;
@@ -47,6 +59,14 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public List<String> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<String> roles) {
+        this.roles = roles;
     }
 
     @Override

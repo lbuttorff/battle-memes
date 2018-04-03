@@ -1,4 +1,4 @@
-package com.ist411.memes.daos;
+package com.ist411.memes.repos;
 
 import com.ist411.memes.models.User;
 import org.springframework.stereotype.Repository;

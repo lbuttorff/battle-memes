@@ -1,6 +1,6 @@
 package com.ist411.memes.services;
 
-import com.ist411.memes.daos.UserRepository;
+import com.ist411.memes.repos.UserRepository;
 import com.ist411.memes.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
