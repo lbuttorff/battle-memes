@@ -9,19 +9,27 @@ import javax.transaction.Transactional;
 import java.util.Arrays;
 
 @Service
-public class UserService {
+public class UserService implements IUserService {
 
     @Autowired
     private UserRepository repository;
 
     @Transactional
-    public User registerNewUserAccount(User u) throws EmailExistsException {
+    @Override
+    public User registerNewUserAccount(User account)
+            throws EmailExistsException {
 
-        if (emailExist(u.getEmail())) {
+        if (emailExist(account.getEmail())) {
             throw new EmailExistsException(
-                    "There is an account with that email address: "+ u.getEmail());
+                    "There is an account with that email address:"  + account.getEmail());
         }
-        return repository.save(u);
+        User user = new User();
+        //user.setFirstName(account.getFirstName());
+        //user.setLastName(account.getLastName());
+        user.setPassword(account.getPassword());
+        user.setEmail(account.getEmail());
+        user.setRoles(Arrays.asList("ROLE_USER"));
+        return repository.save(user);
     }
     private boolean emailExist(String email) {
         User user = repository.findByEmail(email);
@@ -29,11 +37,5 @@ public class UserService {
             return true;
         }
         return false;
-    }
-}
-
-class EmailExistsException extends Exception {
-    public EmailExistsException(String message){
-        super(message);
     }
 }
