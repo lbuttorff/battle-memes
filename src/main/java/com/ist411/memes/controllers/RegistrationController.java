@@ -1,7 +1,10 @@
 package com.ist411.memes.controllers;
 
+import com.ist411.memes.models.User;
 import com.ist411.memes.models.UserDto;
-import org.springframework.security.core.userdetails.User;
+import com.ist411.memes.services.IUserService;
+import com.ist411.memes.services.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -16,6 +19,13 @@ import javax.validation.Valid;
 
 @Controller
 public class RegistrationController {
+    @Autowired
+    private UserService service;
+
+    /*public RegistrationController(@Autowired UserService service){
+        this.service = service;
+    }*/
+
     @RequestMapping(value = "/signup", method = RequestMethod.GET)
     public String showRegistrationForm(WebRequest request, Model model) {
         UserDto userDto = new UserDto();
@@ -30,7 +40,7 @@ public class RegistrationController {
             WebRequest request,
             Errors errors) {
 
-        /*User registered = new User();
+        User registered = new User();
         if (!result.hasErrors()) {
             registered = createUserAccount(accountDto, result);
         }
@@ -41,11 +51,10 @@ public class RegistrationController {
             return new ModelAndView("registration", "user", accountDto);
         }
         else {
-            return new ModelAndView("successRegister", "user", accountDto);
-        }*/
-        return new ModelAndView("global","user", accountDto);
+            return new ModelAndView("global","user", accountDto);
+        }
     }
-    /*private User createUserAccount(UserDto accountDto, BindingResult result) {
+    private User createUserAccount(UserDto accountDto, BindingResult result) {
         User registered = null;
         try {
             registered = service.registerNewUserAccount(accountDto);
@@ -53,5 +62,5 @@ public class RegistrationController {
             return null;
         }
         return registered;
-    }*/
+    }
 }
