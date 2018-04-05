@@ -1,22 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
-    <meta charset="UTF-8">
     <title>Battle Memes</title>
-    <link rel="stylesheet" href="/css/header-footer.css">
-    <link rel="stylesheet" href="/css/global-feed.css">
 </head>
 <body>
-    <div id="header">
-        <h1><a href="/global">Battle Memes</a></h1>
-    </div>
-    <div id="body">
-        <ul>
-            <li>Posts go here...</li>
-        </ul>
-    </div>
-    <div id="footer">
-        <p>Source available on <a href="https://github.com/lbuttorff/battle-memes">GitHub</a></p>
-    </div>
+<h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
+<form th:action="@{/logout}" method="post">
+    <input type="submit" value="Sign Out"/>
+</form>
 </body>
 </html>

@@ -1,8 +1,7 @@
 package com.ist411.memes.controllers;
 
-import com.ist411.memes.models.User;
-import com.ist411.memes.services.IUserService;
-import com.ist411.memes.services.UserService;
+import com.ist411.memes.models.UserDto;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -15,52 +14,44 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
 
-
 @Controller
-@RequestMapping(value = "/signup")
-public class SignUpController {
-
-    private final UserService service;
-
-    public SignUpController(){
-        service = new UserService();
-    }
-
-    @RequestMapping(method = RequestMethod.GET)
+public class RegistrationController {
+    @RequestMapping(value = "/signup", method = RequestMethod.GET)
     public String showRegistrationForm(WebRequest request, Model model) {
-        User user = new User();
-        model.addAttribute("user", user);
-        return "login";
+        UserDto userDto = new UserDto();
+        model.addAttribute("user", userDto);
+        return "registration";
     }
 
-    @RequestMapping(method = RequestMethod.POST)
+    @RequestMapping(value = "/signup", method = RequestMethod.POST)
     public ModelAndView registerUserAccount(
-            @ModelAttribute("user") @Valid User account,
+            @ModelAttribute("user") @Valid UserDto accountDto,
             BindingResult result,
             WebRequest request,
             Errors errors) {
 
-        User registered = new User();
+        /*User registered = new User();
         if (!result.hasErrors()) {
-            registered = createUserAccount(account, result);
+            registered = createUserAccount(accountDto, result);
         }
         if (registered == null) {
             result.rejectValue("email", "message.regError");
         }
         if (result.hasErrors()) {
-            return new ModelAndView("registration", "user", account);
+            return new ModelAndView("registration", "user", accountDto);
         }
         else {
-            return new ModelAndView("successRegister", "user", account);
-        }
+            return new ModelAndView("successRegister", "user", accountDto);
+        }*/
+        return new ModelAndView("global","user", accountDto);
     }
-    private User createUserAccount(User account, BindingResult result) {
+    /*private User createUserAccount(UserDto accountDto, BindingResult result) {
         User registered = null;
         try {
-            registered = service.registerNewUserAccount(account);
+            registered = service.registerNewUserAccount(accountDto);
         } catch (IUserService.EmailExistsException e) {
             return null;
         }
         return registered;
-    }
+    }*/
 }
