@@ -1,8 +1,5 @@
 package com.ist411.memes.models;
 
-
-import org.mindrot.jbcrypt.BCrypt;
-
 import java.util.List;
 
 public class User {

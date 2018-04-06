@@ -13,16 +13,30 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 public class MvcConfig implements WebMvcConfigurer {
 
+    @Autowired
+    private MyUserDetailsService userDetailsService;
+
     @Bean
     public UserService UserService(){
         return new UserService();
     }
 
-    /*public void addViewControllers(ViewControllerRegistry registry) {
+    @Bean
+    public MyUserDetailsService MyUserDetailsService(){
+        return new MyUserDetailsService();
+    }
+
+    public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/").setViewName("main");
-        //registry.addViewController("/global").setViewName("global-feed");
-        //registry.addViewController("/login").setViewName("login");
-        //registry.addViewController("/signup").setViewName("registration");
-    }*/
+        registry.addViewController("/global").setViewName("global-feed");
+        registry.addViewController("/login").setViewName("login");
+        registry.addViewController("/signup").setViewName("registration");
+    }
+
+
+    protected void configure(AuthenticationManagerBuilder auth)
+            throws Exception {
+        auth.userDetailsService(userDetailsService);
+    }
 
 }
