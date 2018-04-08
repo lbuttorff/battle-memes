@@ -1,7 +1,8 @@
-package com.ist411.memes.controllers;
+package com.ist411.memes;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+
 
 @SpringBootApplication
 public class BattleMemesApplication {

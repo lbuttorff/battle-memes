@@ -1,29 +1,30 @@
 package com.ist411.memes.models;
 
-import java.util.List;
+import javax.persistence.*;
+import java.util.Set;
 
+@Entity
+@Table(name = "user")
 public class User {
-    private String firstName;
-    private String lastName;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
+    private String username;
     private String password;
+    @Transient
+    private String confirmPassord;
     //private String passwordHash;
     private String email;
-    private List<String> roles;
+    @ManyToMany
+    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Role> roles;
 
-    public String getFirstName() {
-        return firstName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
@@ -34,9 +35,13 @@ public class User {
         this.password = password;
     }
 
-    /*public void setPasswordHash(String password) {
-        this.passwordHash = BCrypt.hashpw(password, BCrypt.gensalt());
-    }*/
+    public String getConfirmPassord() {
+        return confirmPassord;
+    }
+
+    public void setConfirmPassord(String confirmPassord) {
+        this.confirmPassord = confirmPassord;
+    }
 
     public String getEmail() {
         return email;
@@ -46,11 +51,11 @@ public class User {
         this.email = email;
     }
 
-    public List<String> getRoles() {
+    public Set<Role> getRoles() {
         return roles;
     }
 
-    public void setRoles(List<String> roles) {
+    public void setRoles(Set<Role> roles) {
         this.roles = roles;
     }
 }
