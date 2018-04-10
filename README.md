@@ -5,6 +5,4 @@ I strive to give users a new perspective on memes by allowing them to post and v
 See our project proposal [here on our GitHub.io page](https://lbuttorff.github.io/battle-memes/)
 
 ## Framework
-I chose to use Spring MVC as the framework as a way to learn a new tool. It has its challenges, as does any framework, but I have mostly enjoyed the process. I hope to bring the best and dankest features to this platform as I develop it for a class project and for fun.
-
-I am using Hibernate to manage data through a MySQL connection. I believe big players like Facebook use NoSQL solutions but that is out of the scope of this project.
+I was forced to use Spring Boot and Spring MVC as the framework for this project. As with any system where the guides, documentation, and actual implementations differ, it is a crappy application. I do not understand why anyone would choose this framework to develop in, it is far too confounded for its own utility. I highly recommend using a framework like Play, because of its simplicity and ease of access to the new MVC developer. 
